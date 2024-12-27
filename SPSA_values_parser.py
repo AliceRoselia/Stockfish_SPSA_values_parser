@@ -86,11 +86,11 @@ def formatted_print(info,dimension,idxs = tuple()):
     if len(idxs) == len(dimension):
         return str(info[idxs])
     i = len(idxs)
-    x = (formatted_print(info, dimension,idxs+(j,)) for j in range(dimension[i]))
+    x = (formatted_print(info, dimension,idxs+(j,)) for j in range(dimension[i]+1))
     return "{" + ",".join(x) + "}"
 
 
 for variable, dimension in dims.items():
-    print(vartype,variable,"=")
+    print(vartype," ",variable,"[]"*len(dimension)," = ",sep="")
     print(formatted_print(info[variable], dimension),";",sep="")
 
